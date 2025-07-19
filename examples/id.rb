@@ -1,6 +1,6 @@
 require "ygoprodeck"
 
-yugi = Ygoprodeck::ID.is("1121313")
+yugi = Ygoprodeck::ID.is("46986414")
 
 case
 when yugi == nil

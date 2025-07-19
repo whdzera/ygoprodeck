@@ -29,29 +29,40 @@ Or install it yourself as:
 require 'ygoprodeck'
 ```
 
-Fuzzy search : 
+
+Search card by id :
 ```ruby
-Ygoprodeck::Fname.is(*name)
+Ygoprodeck::ID.is(*id)
 ```
 
-Normal search :
+Search card by name :
 ```ruby
 Ygoprodeck::Name.is(*name)
 ```
 
-Random search :
+search card by name (use method fuzzy) : 
 ```ruby
-Ygoprodeck::Card.random
+Ygoprodeck::Fname.is(*name)
 ```
 
-List search :
+Search list card by name:
 ```ruby
 Ygoprodeck::List.is(*name)
 ```
 
-Archetype search :
+Search Archtype by name:
 ```ruby
 Ygoprodeck::Archetype.is(*name)
+```
+
+Matching card by name :
+```ruby
+Ygoprodeck::Match.is(*name)
+```
+
+Random card :
+```ruby
+Ygoprodeck::Card.random
 ```
 
 All card sets :
@@ -81,11 +92,6 @@ Get Cropped Image :
 ```ruby
 yugi = Ygoprodeck::Fname.is(*name)
 Ygoprodeck::Image_small.is(yugi['id'])
-```
-
-Matching :
-```ruby
-Ygoprodeck::Match.is(*name)
 ```
 
 or look [examples](https://github.com/whdzera/ygoprodeck/blob/master/examples)
@@ -127,7 +133,7 @@ Rate Limiting on the API is enabled. The rate limit is 20 requests per 1 second
 
 #### Unit Test
 ```
-rspec 
+rake spec 
 ```
 
 ## Contributing
@@ -137,4 +143,4 @@ Fork and Pull Request to contibuting https://github.com/whdzera/ygoprodeck .
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
 
 ## Code of Conduct
-Everyone interacting in the Ygoprodeck project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/rokhimin/ygoprodeck/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the Ygoprodeck project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/whdzera/ygoprodeck/blob/master/CODE_OF_CONDUCT.md).
