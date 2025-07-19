@@ -82,13 +82,13 @@ Check Database Version :
 Ygoprodeck::CheckDbVer.info
 ```
 
-Get Full Image :
+Image card :
 ```ruby
 yugi = Ygoprodeck::Fname.is(*name)
 Ygoprodeck::Image.is(yugi['id'])
 ```
 
-Get Cropped Image :
+Cropped Image card (Art) :
 ```ruby
 yugi = Ygoprodeck::Fname.is(*name)
 Ygoprodeck::Image_small.is(yugi['id'])
