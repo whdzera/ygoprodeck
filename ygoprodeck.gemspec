@@ -6,10 +6,10 @@ Gem::Specification.new do |spec|
   spec.name = "ygoprodeck"
   spec.version = Ygoprodeck::VERSION
   spec.authors = ["Rokhimin Wahid"]
-  spec.email = ["rokhim.whd@gmail.com"]
+  spec.email = ["whdzera@gmail.com"]
   spec.summary = "ygoprodeck API wrapper for search yugioh's card"
   spec.description = "ygoprodeck API wrapper for search yugioh card"
-  spec.homepage = "http://github.com/rokhimin/ygoprodeck"
+  spec.homepage = "http://github.com/whdzera/ygoprodeck"
   spec.license = "MIT"
 
   spec.files = `git ls-files -z`.split("\x0")
