@@ -1,0 +1,9 @@
+inherit_from: .rubocop_todo.yml
+AllCops:
+  Include:
+    - "**/*.rb"
+    - "**/*.rake"
+  Exclude:
+    - "vendor/**/*"
+    - "db/schema.rb"
+  NewCops: enable
