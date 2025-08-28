@@ -10,3 +10,4 @@ node_modules
 .rspec_status
 Gemfile.lock
 package-lock.json
+.rubocop_todo.yml
