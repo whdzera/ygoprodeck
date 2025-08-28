@@ -3,6 +3,7 @@ AllCops:
   Include:
     - "**/*.rb"
     - "**/*.rake"
+    - "."
   Exclude:
     - "vendor/**/*"
     - "db/schema.rb"
