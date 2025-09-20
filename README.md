@@ -29,66 +29,78 @@ Or install it yourself as:
 require 'ygoprodeck'
 ```
 
-
 Search card by id :
+
 ```ruby
 Ygoprodeck::ID.is(*id)
 ```
 
 Search card by name :
+
 ```ruby
 Ygoprodeck::Name.is(*name)
 ```
 
-search card by name (use method fuzzy) : 
+search card by name (use method fuzzy) :
+
 ```ruby
 Ygoprodeck::Fname.is(*name)
 ```
 
 Search list card by name:
+
 ```ruby
 Ygoprodeck::List.is(*name)
 ```
 
 Search Archtype by name:
+
 ```ruby
 Ygoprodeck::Archetype.is(*name)
 ```
 
 Matching card by name :
+
 ```ruby
 Ygoprodeck::Match.is(*name)
 ```
 
 Random card :
+
 ```ruby
 Ygoprodeck::Card.random
 ```
 
 All card sets :
+
 ```ruby
 Ygoprodeck::Card.sets
 ```
 
-Banlist (TCG, OCG, GOAT) :
+Banlist (MasterDuel, TCG, OCG, GOAT) :
+
 ```ruby
+Ygoprodeck::Banlist.md
 Ygoprodeck::Banlist.tcg
 Ygoprodeck::Banlist.ocg
 Ygoprodeck::Banlist.goat
 ```
 
 Check Database Version :
+
 ```ruby
 Ygoprodeck::CheckDbVer.info
 ```
 
 Image card :
+
 ```ruby
 yugi = Ygoprodeck::Fname.is(*name)
 Ygoprodeck::Image.is(yugi['id'])
 ```
 
 Cropped Image card (Art) :
+
 ```ruby
 yugi = Ygoprodeck::Fname.is(*name)
 Ygoprodeck::Image_small.is(yugi['id'])
@@ -96,12 +108,14 @@ Ygoprodeck::Image_small.is(yugi['id'])
 
 or look [examples](https://github.com/whdzera/ygoprodeck/blob/master/examples)
 
-#### Noted 
+#### Noted
+
 Rate Limiting on the API is enabled. The rate limit is 20 requests per 1 second
 
 #### Response Information
 
 ##### Monster Cards
+
 - id - ID or Passocde of the card.
 - name - Name of the card.
 - type - The type of card you are viewing (Normal Monster, Effect Monster, Synchro Monster, etc).
@@ -132,15 +146,19 @@ Rate Limiting on the API is enabled. The rate limit is 20 requests per 1 second
 ## Development
 
 #### Unit Test
+
 ```
-rake spec 
+rake spec
 ```
 
 ## Contributing
+
 Fork and Pull Request to contibuting https://github.com/whdzera/ygoprodeck .
 
 ## License
+
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
 
 ## Code of Conduct
+
 Everyone interacting in the Ygoprodeck project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/whdzera/ygoprodeck/blob/master/CODE_OF_CONDUCT.md).
