@@ -3,8 +3,7 @@ require "ygoprodeck"
 # yugi is example, you free to change name card
 yugi = Ygoprodeck::Name.is("dark magician") # example I wanna search 'dark magician' using fuzzy search
 
-case
-when yugi == nil
+if yugi.nil?
   puts "Card not found"
 else
   puts yugi # => get all information of dark magician (name,id,level,attr,atk,def,etc)

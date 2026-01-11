@@ -1,4 +1,6 @@
-inherit_from: .rubocop_todo.yml
+require:
+  - rubocop-performance
+
 AllCops:
   Include:
     - "**/*.rb"
@@ -7,4 +9,61 @@ AllCops:
   Exclude:
     - "vendor/**/*"
     - "db/schema.rb"
+    - Gemfile
+    - Rakefile
+    - "*.gemspec"
   NewCops: enable
+
+Performance:
+  Enabled: true
+
+Layout/LineLength:
+  Enabled: false
+
+Style/BlockDelimiters:
+  Enabled: false
+
+Lint/AmbiguousBlockAssociation:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
+
+Layout/HeredocIndentation:
+  Enabled: false
+
+Metrics/ClassLength:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/ParameterLists:
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/PerceivedComplexity:
+  Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Enabled: false
+
+Style/HashEachMethods:
+  Enabled: true
+
+Style/HashTransformKeys:
+  Enabled: false
+
+Style/HashTransformValues:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/StringLiterals:
+  Enabled: false

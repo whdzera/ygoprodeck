@@ -1,7 +1,7 @@
 module Ygoprodeck
   class ID
     def self.is(id)
-      url = "#{Ygoprodeck::Endpoint.is}cardinfo.php?id=#{(id)}"
+      url = "#{Ygoprodeck::Endpoint.is}cardinfo.php?id=#{id}"
       uri = URI(url)
 
       begin
@@ -11,8 +11,8 @@ module Ygoprodeck
         return nil if load["data"].nil? || load["data"].empty?
 
         load["data"][0]
-      rescue JSON::ParserError, SocketError, StandardError => e
-        nil
+      rescue StandardError
+        { "error" => "Something went wrong" }
       end
     end
   end

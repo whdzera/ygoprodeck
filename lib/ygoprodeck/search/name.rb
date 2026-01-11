@@ -1,9 +1,9 @@
 module Ygoprodeck
   class Name
     attr_reader :name
-    
+
     def self.is(name)
-      url = "#{Ygoprodeck::Endpoint.is}cardinfo.php?name=#{URI.encode_www_form_component(name)}"
+      url = "#{Ygoprodeck::Endpoint.is}cardinfo.php?name=#{URI.encode_www_form_component(name)}&format=genesys&misc=yes"
       uri = URI(url)
 
       begin
@@ -13,9 +13,8 @@ module Ygoprodeck
         return nil if load["data"].nil? || load["data"].empty?
 
         load["data"][0]
-
-      rescue JSON::ParserError, SocketError, StandardError => e
-        nil
+      rescue StandardError
+        { "error" => "Something went wrong" }
       end
     end
   end

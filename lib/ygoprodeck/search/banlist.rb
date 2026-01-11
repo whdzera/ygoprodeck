@@ -4,16 +4,16 @@ require 'uri'
 
 module Ygoprodeck
   class Banlist
-    API_BASE = 'https://ygoprodeck.com/api/banlist'
+    API_BASE = 'https://ygoprodeck.com/api/banlist'.freeze
 
     def self.fetch_banlist(format)
       url = "#{Ygoprodeck::Endpoint.is}cardinfo.php?banlist=#{format}"
       uri = URI(url)
-      
+
       begin
         response = Net::HTTP.get(uri)
         load = JSON.parse(response)
-        
+
         if load.has_key?('error')
           { 'error' => load['error'] }
         else
@@ -31,17 +31,16 @@ module Ygoprodeck
     def self.tcg
       fetch_banlist('tcg')
     end
-    
+
     def self.ocg
       fetch_banlist('ocg')
     end
-    
+
     def self.goat
       fetch_banlist('goat')
     end
 
     def self.md
-      
       dates_uri = URI("#{API_BASE}/getBanListDates.php")
       dates_res = Net::HTTP.get(dates_uri)
       dates = JSON.parse(dates_res)
@@ -72,7 +71,6 @@ module Ygoprodeck
       { 'error' => 'Network connection error' }
     rescue StandardError => e
       { 'error' => "An unexpected error occurred: #{e.message}" }
-      
     end
   end
 end

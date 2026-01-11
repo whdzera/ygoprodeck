@@ -4,7 +4,7 @@ module Ygoprodeck
 
     def self.is(archetype)
       url =
-        "#{Ygoprodeck::Endpoint.is}cardinfo.php?archetype=#{URI.encode_www_form_component(archetype)}"
+        "#{Ygoprodeck::Endpoint.is}cardinfo.php?archetype=#{URI.encode_www_form_component(archetype)}&format=genesys&misc=yes"
       uri = URI(url)
 
       begin
@@ -18,12 +18,8 @@ module Ygoprodeck
         else
           load["data"]
         end
-      rescue JSON::ParserError => e
-        { "error" => "Failed to parse JSON response" }
-      rescue SocketError => e
-        { "error" => "Network connection error" }
-      rescue StandardError => e
-        { "error" => "An unexpected error occurred: #{e.message}" }
+      rescue StandardError
+        { "error" => "Something went wrong" }
       end
     end
   end
