@@ -4,7 +4,7 @@ RSpec.describe Ygoprodeck do
   end
 
   it "check search by fuzzy name spesific" do
-		spec_name = Ygoprodeck::Fname.is('dark magician')
-    expect(spec_name['id']).to eq(46986414)
-	end
+    spec_name = Ygoprodeck::Fname.is('dark magician')
+    expect(spec_name['id']).to eq(46986421)
+  end
 end

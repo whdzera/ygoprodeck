@@ -1,7 +1,7 @@
 require "ygoprodeck"
 
 # match name card exactly
-matching = Ygoprodeck::Match.is('aa zeus')
+matching = Ygoprodeck::Match.is('dark magician')
 yugi = Ygoprodeck::Fname.is(matching)
 
 if yugi.nil?
