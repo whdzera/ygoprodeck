@@ -1,7 +1,8 @@
 require "ygoprodeck"
 
-# yugi is example, you free to change name card
-yugi = Ygoprodeck::Name.is("dark magician") # example I wanna search 'dark magician' using fuzzy search
+# match name card exactly
+matching = Ygoprodeck::Match.is('aa zeus')
+yugi = Ygoprodeck::Fname.is(matching)
 
 if yugi.nil?
   puts "Card not found"

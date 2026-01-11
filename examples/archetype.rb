@@ -10,7 +10,7 @@ num_default = 0 # number default
 
 # looping logic
 for logic_search in 1..50
-  if kaiba[num_default] == nil
+  if kaiba[num_default].nil?
   else
     kaiba_listing << kaiba[num_default]["name"]
     num_default += 1
@@ -18,6 +18,6 @@ for logic_search in 1..50
   end
 end
 
-puts "#{kaiba_listing.length} card matches for blue-eyes archetype" #length blue-eyes archetype
+puts "#{kaiba_listing.length} card matches for blue-eyes archetype" # length blue-eyes archetype
 puts "#" * 30
 puts "#{kaiba_listing.join(" \n")}" # each listing
