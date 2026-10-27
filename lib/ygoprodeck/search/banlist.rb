@@ -29,11 +29,69 @@ module Ygoprodeck
     end
 
     def self.tcg
-      fetch_banlist('tcg')
+      dates_uri = URI("#{API_BASE}/getBanListDates.php")
+      dates_res = Net::HTTP.get(dates_uri)
+      dates = JSON.parse(dates_res)
+
+      tcg_dates = dates.select { |d| d['type'] == 'TCG' }
+      return { 'error' => 'No TCG dates found' } if tcg_dates.empty?
+
+      latest_date = tcg_dates.map { |d| d['date'] }.max
+
+      list_uri = URI("#{API_BASE}/getBanList.php?list=TCG&date=#{latest_date}")
+      req = Net::HTTP::Get.new(list_uri)
+      req['User-Agent'] = 'Mozilla/5.0'
+
+      res = Net::HTTP.start(list_uri.host, list_uri.port, use_ssl: true) do |http|
+        http.request(req)
+      end
+
+      load = JSON.parse(res.body)
+
+      if load.is_a?(Hash) && load.key?('error')
+        { 'error' => load['error'] }
+      else
+        load
+      end
+    rescue JSON::ParserError
+      { 'error' => 'Failed to parse JSON response' }
+    rescue SocketError
+      { 'error' => 'Network connection error' }
+    rescue StandardError => e
+      { 'error' => "An unexpected error occurred: #{e.message}" }
     end
 
     def self.ocg
-      fetch_banlist('ocg')
+      dates_uri = URI("#{API_BASE}/getBanListDates.php")
+      dates_res = Net::HTTP.get(dates_uri)
+      dates = JSON.parse(dates_res)
+
+      ocg_dates = dates.select { |d| d['type'] == 'OCG' }
+      return { 'error' => 'No OCG dates found' } if ocg_dates.empty?
+
+      latest_date = ocg_dates.map { |d| d['date'] }.max
+
+      list_uri = URI("#{API_BASE}/getBanList.php?list=OCG&date=#{latest_date}")
+      req = Net::HTTP::Get.new(list_uri)
+      req['User-Agent'] = 'Mozilla/5.0'
+
+      res = Net::HTTP.start(list_uri.host, list_uri.port, use_ssl: true) do |http|
+        http.request(req)
+      end
+
+      load = JSON.parse(res.body)
+
+      if load.is_a?(Hash) && load.key?('error')
+        { 'error' => load['error'] }
+      else
+        load
+      end
+    rescue JSON::ParserError
+      { 'error' => 'Failed to parse JSON response' }
+    rescue SocketError
+      { 'error' => 'Network connection error' }
+    rescue StandardError => e
+      { 'error' => "An unexpected error occurred: #{e.message}" }
     end
 
     def self.goat
